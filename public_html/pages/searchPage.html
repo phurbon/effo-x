@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="../">
+  <meta charset="UTF-8">
+  <title>Search – Effo-X</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="assets/images/biggerlogoeffo.png">
+  <link rel="stylesheet" href="assets/css/styles.css?v=20260808-2">
+  <link rel="stylesheet" href="assets/css/produit.css">
+  <link rel="stylesheet" href="assets/css/search.css">
+  <script type="module" src="https://cdn.shopify.com/storefront/web-components.js"></script>
+</head>
+<body class="search-theme">
+<shopify-store
+  store-domain="https://effo-x.myshopify.com"
+  public-access-token="79268ccf9a0efa1cbab2afcd2b96f637"
+  country="CA"
+  language="en"
+>
+  <div data-include="partials/header.html"></div>
+
+  <main class="search-page">
+    <shopify-cart id="shopify-cart"></shopify-cart>
+
+    <section class="search-hero" data-scene>
+      <div class="search-hero__content" data-scroll data-y="20,0" data-opacity="0.7,1">
+        <p class="eyebrow">Search the signal</p>
+        <h1>Find your next Effo-X fit.</h1>
+        <p class="lede">Explore the collection with real-time results. Try a category, a product type, or a vibe.</p>
+        <form class="search-form" action="/searchPage" method="get">
+          <label class="search-field">
+            <span class="sr-only">Search products</span>
+            <input id="search-input" name="query" type="search" placeholder="Search: leggings, hoodie, compression..." autocomplete="off">
+          </label>
+          <button class="search-submit" type="submit">Search</button>
+        </form>
+        <div class="search-chips" aria-label="Quick searches">
+          <a class="search-chip" href="/searchPage?query=hoodie">Hoodies</a>
+          <a class="search-chip" href="/searchPage?query=leggings">Leggings</a>
+          <a class="search-chip" href="/searchPage?query=training">Training</a>
+          <a class="search-chip" href="/searchPage?query=street">Street</a>
+        </div>
+      </div>
+      <div class="search-hero__panel" data-scroll data-y="16,0" data-opacity="0.75,1">
+        <div class="panel-card">
+          <p class="panel-kicker">Live results</p>
+          <h3>Every search updates instantly from the Effo-X store.</h3>
+          <p class="panel-copy">Tap any product to open the quick view and move straight to checkout.</p>
+          <div class="panel-metrics">
+            <div>
+              <span>24</span>
+              <small>Results per page</small>
+            </div>
+            <div>
+              <span>New</span>
+              <small>Drops weekly</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="search-results" data-scene>
+      <div class="results-head" data-scroll data-y="14,0" data-opacity="0.75,1">
+        <div>
+          <p class="eyebrow">Search results</p>
+          <h2 id="search-title">Search</h2>
+          <p class="results-sub">Browse the latest styles and performance essentials.</p>
+        </div>
+        <div class="results-controls">
+          <label class="sort-field">
+            <span>Sort by</span>
+            <select id="search-sort">
+              <option value="featured">Featured</option>
+              <option value="newest">Newest</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+            </select>
+          </label>
+          <div id="count" class="results-count"></div>
+        </div>
+      </div>
+      <div id="results-grid" class="search-grid" data-scroll data-y="12,0" data-opacity="0.85,1" aria-live="polite"></div>
+      <nav id="pager" class="search-pager">
+        <button id="load-more" type="button">Load more</button>
+        <span class="pager-status">Keep scrolling for more drops.</span>
+      </nav>
+      <p id="no-results" class="no-results" hidden>No products found for “<span id="no-results-term"></span>”.</p>
+    </section>
+
+    <section id="recommendations" class="search-recommendations" hidden data-scene>
+      <div class="recommendations-head" data-scroll data-y="12,0" data-opacity="0.8,1">
+        <div>
+          <p class="eyebrow">You may also like</p>
+          <h2>Other Effo‑X picks</h2>
+          <p class="recommendations-sub">Fresh drops and bestsellers to keep you moving.</p>
+        </div>
+      </div>
+      <div id="recommendations-grid" class="search-grid" data-scroll data-y="10,0" data-opacity="0.85,1" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <dialog id="product-modal" class="product-modal" role="dialog" aria-modal="true" aria-labelledby="product-modal-title">
+    <shopify-context id="product-modal-context" type="product">
+      <template>
+        <div class="product-modal__content">
+          <div class="pm-grid">
+            <div class="pm-media">
+              <div class="modal-gallery" data-modal-gallery>
+                    <div class="modal-gallery__main">
+                      <img data-modal-main alt="">
+                    </div>
+                    <div class="modal-gallery__thumbs" data-modal-thumbs></div>
+                    <span data-modal-handle hidden><shopify-data query="product.handle"></shopify-data></span>
+                  </div>
+            </div>
+            <div class="pm-info">
+              <h2 id="product-modal-title"><shopify-data query="product.title"></shopify-data></h2>
+              <p class="pm-price"><shopify-money query="product.selectedOrFirstAvailableVariant.price"></shopify-money></p>
+              <div class="pm-desc">
+                <shopify-data query="product.descriptionHtml"></shopify-data>
+              </div>
+              <shopify-variant-selector></shopify-variant-selector>
+              <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-top:1rem;">
+                <button class="btn" type="button" onclick="const cart=document.getElementById('shopify-cart'); cart?.addLine(event); cart?.showModal(); document.getElementById('product-modal').close();">Add to cart</button>
+                <button class="btn" type="button" style="background:transparent; color:#111; border-color:#111;" onclick="document.querySelector('shopify-store')?.buyNow(event)">Buy now</button>
+              </div>
+              <button class="pm-close" type="button" onclick="document.getElementById('product-modal').close();">Close</button>
+            </div>
+          </div>
+        </div>
+      </template>
+    </shopify-context>
+  </dialog>
+
+  <div data-include="partials/footer.html"></div>
+</shopify-store>
+
+<script src="assets/js/includes.js?v=20260808-2"></script>
+<script src="assets/js/header.js?v=20260808-2"></script>
+<script>
+  (function(){
+    const params = new URLSearchParams(location.search);
+    const rawQuery = (params.get('query') || '').trim();
+    const MAX_QUERY_LENGTH = 60;
+    const safeQuery = sanitizeQueryTerm(rawQuery);
+    const displayQuery = safeQuery || rawQuery;
+    const title = document.getElementById('search-title');
+    const noResults = document.getElementById('no-results');
+    const noResultsTerm = document.getElementById('no-results-term');
+    const grid = document.getElementById('results-grid');
+    const pager = document.getElementById('pager');
+    const loadMoreBtn = document.getElementById('load-more');
+    const countEl = document.getElementById('count');
+    const recSection = document.getElementById('recommendations');
+    const recGrid = document.getElementById('recommendations-grid');
+    const searchInput = document.getElementById('search-input');
+    const sortSelect = document.getElementById('search-sort');
+    const sort = params.get('sort');
+
+    title.textContent = displayQuery ? `Results for “${displayQuery}”` : 'All products';
+    if (searchInput) searchInput.value = displayQuery || '';
+    if (sortSelect) {
+      sortSelect.value = sort || 'featured';
+      sortSelect.addEventListener('change', () => {
+        const next = new URLSearchParams(window.location.search);
+        if (displayQuery) next.set('query', displayQuery);
+        const value = sortSelect.value;
+        if (value && value !== 'featured') {
+          next.set('sort', value);
+        } else {
+          next.delete('sort');
+        }
+        window.location.search = next.toString();
+      });
+    }
+
+    const STORE_DOMAIN = 'https://effo-x.myshopify.com';
+    const STOREFRONT_TOKEN = '79268ccf9a0efa1cbab2afcd2b96f637';
+    const sortMap = {
+      'price-asc': { key: 'PRICE', reverse: false },
+      'price-desc': { key: 'PRICE', reverse: true },
+      'newest': { key: 'CREATED_AT', reverse: true },
+      'featured': { key: 'RELEVANCE', reverse: false }
+    };
+    const sortKey = sortMap[sort]?.key || 'RELEVANCE';
+    const reverse = !!sortMap[sort]?.reverse;
+    const baseSearchExpression = buildSearchExpression(safeQuery);
+
+    let endCursor = null;
+    let totalRendered = 0;
+
+    async function fetchProducts(afterCursor){
+      const queryGql = `#graphql
+        query SearchProducts($first:Int!, $query:String, $sortKey:ProductSortKeys, $reverse:Boolean, $after:String){
+          products(first:$first, query:$query, sortKey:$sortKey, reverse:$reverse, after:$after){
+            edges{ node{
+              handle
+              title
+              description
+              featuredImage{ url altText width height }
+              priceRange{ minVariantPrice{ amount currencyCode } }
+            }}
+            pageInfo{ hasNextPage endCursor }
+          }
+        }
+      `;
+      const variables = {
+        first: 24,
+        query: baseSearchExpression,
+        sortKey,
+        reverse,
+        after: afterCursor || null
+      };
+      const res = await fetch(`${STORE_DOMAIN}/api/2025-10/graphql.json`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Shopify-Storefront-Access-Token': STOREFRONT_TOKEN
+        },
+        body: JSON.stringify({ query: queryGql, variables })
+      });
+      if (!res.ok) throw new Error('Storefront API error: ' + res.status);
+      return res.json();
+    }
+
+    async function fetchRecommendations(){
+      const queryGql = `#graphql
+        query RecommendedProducts($first:Int!, $sortKey:ProductSortKeys, $reverse:Boolean){
+          products(first:$first, sortKey:$sortKey, reverse:$reverse){
+            edges{ node{
+              handle
+              title
+              description
+              featuredImage{ url altText width height }
+              priceRange{ minVariantPrice{ amount currencyCode } }
+            }}
+          }
+        }
+      `;
+      const variables = {
+        first: 8,
+        sortKey: 'BEST_SELLING',
+        reverse: false
+      };
+      const res = await fetch(`${STORE_DOMAIN}/api/2025-10/graphql.json`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Shopify-Storefront-Access-Token': STOREFRONT_TOKEN
+        },
+        body: JSON.stringify({ query: queryGql, variables })
+      });
+      if (!res.ok) throw new Error('Storefront API error: ' + res.status);
+      return res.json();
+    }
+
+    function sanitizeQueryTerm(value){
+      if (!value) return '';
+      return value
+        .replace(/[^a-z0-9\s-]/gi, ' ')
+        .replace(/\s+/g, ' ')
+        .trim()
+        .slice(0, MAX_QUERY_LENGTH);
+    }
+
+    function buildSearchExpression(term){
+      if (!term) return undefined;
+      const tokens = term.split(/\s+/).filter(Boolean).slice(0, 5);
+      if (!tokens.length) return undefined;
+      const clauses = [];
+      tokens.forEach((token) => {
+        clauses.push(
+          `title:${token}*`,
+          `tag:${token}*`,
+          `product_type:${token}*`,
+          `vendor:${token}*`
+        );
+      });
+      return clauses.join(' OR ');
+    }
+
+    function sanitizeHandle(handle){
+      if (typeof handle !== 'string') return null;
+      const trimmed = handle.trim();
+      return /^[a-z0-9-]{1,150}$/i.test(trimmed) ? trimmed : null;
+    }
+
+    function money({ amount, currencyCode }){
+      const n = Number(amount);
+      try {
+        return new Intl.NumberFormat(undefined, { style: 'currency', currency: currencyCode }).format(n);
+      } catch (err) {
+        return `${n.toFixed(2)} ${currencyCode}`;
+      }
+    }
+
+    function renderCard(p){
+      const handle = sanitizeHandle(p.handle);
+      if (!handle) return null;
+      const card = document.createElement('article');
+      card.className = 'product-card';
+      const imgWrap = document.createElement('div');
+      imgWrap.className = 'img-wrap';
+      const link = document.createElement('a');
+      link.className = 'product__link';
+      link.href = `/product-detail?handle=${encodeURIComponent(handle)}`;
+      link.dataset.handle = handle;
+
+      if (p.featuredImage?.url) {
+        const img = document.createElement('img');
+        img.src = p.featuredImage.url;
+        img.alt = typeof p.featuredImage.altText === 'string' ? p.featuredImage.altText : '';
+        link.appendChild(img);
+      } else {
+        const skeleton = document.createElement('div');
+        skeleton.className = 'img-skeleton';
+        skeleton.style.height = '200px';
+        skeleton.setAttribute('aria-hidden', 'true');
+        link.appendChild(skeleton);
+      }
+
+      imgWrap.appendChild(link);
+      card.appendChild(imgWrap);
+
+      const meta = document.createElement('div');
+      meta.className = 'meta';
+
+      const brandHeading = document.createElement('h3');
+      brandHeading.className = 'brand';
+      const brandLink = document.createElement('a');
+      brandLink.className = 'product__link';
+      brandLink.href = `/product-detail?handle=${encodeURIComponent(handle)}`;
+      brandLink.dataset.handle = handle;
+      brandLink.textContent = typeof p.title === 'string' ? p.title : 'View product';
+      brandHeading.appendChild(brandLink);
+
+      const price = document.createElement('p');
+      price.className = 'price';
+      const minPrice = p.priceRange?.minVariantPrice;
+      price.textContent = minPrice ? money(minPrice) : '';
+
+      meta.appendChild(brandHeading);
+      meta.appendChild(price);
+      card.appendChild(meta);
+
+      return card;
+    }
+
+    async function load(initial=false){
+      loadMoreBtn.disabled = true;
+      const data = await fetchProducts(endCursor);
+      const conn = data.data?.products;
+      const items = conn?.edges?.map(e => e.node) || [];
+      if(initial && items.length === 0){
+        if(displayQuery){ noResultsTerm.textContent = displayQuery; noResults.hidden = false; }
+        pager.style.display = 'none';
+        loadRecommendations();
+        return;
+      }
+      items.forEach(p => {
+        const card = renderCard(p);
+        if (!card) return;
+        grid.appendChild(card);
+        totalRendered++;
+      });
+      countEl.textContent = totalRendered ? `${totalRendered} items` : '';
+      endCursor = conn?.pageInfo?.endCursor || null;
+      const hasNext = !!conn?.pageInfo?.hasNextPage;
+      pager.style.display = hasNext ? 'flex' : (totalRendered ? 'none' : 'none');
+      loadMoreBtn.disabled = !hasNext;
+    }
+
+    load(true).catch(err => {
+      console.error(err);
+      noResults.hidden = false;
+      noResultsTerm.textContent = displayQuery || '';
+      loadRecommendations();
+    });
+
+    loadMoreBtn?.addEventListener('click', () => load(false));
+
+    [grid, recGrid].forEach((targetGrid) => {
+      if (!targetGrid) return;
+      targetGrid.addEventListener('click', (event) => {
+        const link = event.target.closest('.product__link');
+        if (!link) return;
+        event.preventDefault();
+        const handle = link.dataset.handle;
+        const dlg = document.getElementById('product-modal');
+        const ctx = document.getElementById('product-modal-context');
+        if (ctx && handle) ctx.setAttribute('handle', handle);
+        dlg?.showModal();
+      });
+    });
+
+    async function loadRecommendations(){
+      if (!recSection || !recGrid) return;
+      if (recSection.dataset.loaded === 'true') return;
+      recSection.dataset.loaded = 'true';
+      try {
+        const data = await fetchRecommendations();
+        const items = data.data?.products?.edges?.map(e => e.node) || [];
+        if (!items.length) return;
+        recGrid.innerHTML = '';
+        items.forEach(p => {
+          const card = renderCard(p);
+          if (!card) return;
+          recGrid.appendChild(card);
+        });
+        recSection.hidden = false;
+      } catch (err) {
+        console.error('Recommendations failed', err);
+      }
+    }
+  })();
+</script>
+</body>
+</html>

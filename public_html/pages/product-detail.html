@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="../">
+  <meta charset="UTF-8">
+  <title>Product Detail - Effo-X</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="assets/images/biggerlogoeffo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css?v=20260808-2">
+  <link rel="stylesheet" href="assets/css/produit.css">
+  <script type="module" src="https://cdn.shopify.com/storefront/web-components.js"></script>
+</head>
+<body>
+<shopify-store
+  store-domain="https://effo-x.myshopify.com"
+  public-access-token="79268ccf9a0efa1cbab2afcd2b96f637"
+  country="CA"
+  language="en"
+>
+  <div data-include="partials/header.html"></div>
+
+  <main class="product-detail" style="padding:2rem; margin-top:120px;">
+    <div class="section-bar">
+      <h1 class="section-title" style="font-size:2.5rem;">Product Detail</h1>
+    </div>
+    <p>Use the query string parameter <code>?handle=product-handle</code> to load any item from the Effo‑X Shopify catalog.</p>
+
+    <shopify-context type="product" id="product-detail-context" handle="flex-seamless-crop">
+      <template>
+        <article class="product-detail__wrap" style="display:grid; gap:2rem; grid-template-columns: minmax(0,1.1fr) minmax(0,0.9fr); align-items:start;">
+          <div class="gallery">
+            <shopify-media-gallery>
+              <shopify-media query="product.media" width="900" height="1100"></shopify-media>
+            </shopify-media-gallery>
+          </div>
+
+          <div class="info" style="display:flex; flex-direction:column; gap:1.2rem;">
+            <h2 style="font-size:2.4rem; margin:0;"><shopify-data query="product.title"></shopify-data></h2>
+            <p class="price">
+              <shopify-money query="product.selectedOrFirstAvailableVariant.price"></shopify-money>
+            </p>
+
+            <shopify-variant-selector></shopify-variant-selector>
+
+            <div class="description">
+              <shopify-data query="product.descriptionHtml"></shopify-data>
+            </div>
+
+            <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+              <button class="btn" type="button" onclick="document.getElementById('shopify-cart')?.addLine(event); document.getElementById('shopify-cart')?.showModal();">
+                Add to cart
+              </button>
+              <button class="btn" type="button" style="background:transparent; color:#111; border-color:#111;"
+                      onclick="document.querySelector('shopify-store')?.buyNow(event);">
+                Buy now
+              </button>
+            </div>
+          </div>
+        </article>
+      </template>
+    </shopify-context>
+  </main>
+
+  <div data-include="partials/footer.html"></div>
+</shopify-store>
+
+<script src="assets/js/includes.js?v=20260808-2"></script>
+<script src="assets/js/header.js?v=20260808-2"></script>
+<script>
+  document.addEventListener('partialsLoaded', () => {
+    const context = document.getElementById('product-detail-context');
+    if (!context) return;
+    const params = new URLSearchParams(window.location.search);
+    const handle = params.get('handle');
+    if (!handle) return;
+    const sanitizedHandle = handle.toLowerCase().trim();
+    if (!/^[a-z0-9-]{1,150}$/.test(sanitizedHandle)) {
+      console.warn('Ignoring invalid product handle from query string');
+      return;
+    }
+    context.setAttribute('handle', sanitizedHandle);
+  });
+</script>
+</body>
+</html>

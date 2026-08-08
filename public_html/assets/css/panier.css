@@ -1,0 +1,154 @@
+/* Importation de la police Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.2s linear;
+}
+
+/* Fond de page : dégradé du vert (gauche) vers le noir (droite) */
+body {
+  background: linear-gradient(90deg, #27ae60, #000000);
+  min-height: 100vh;
+}
+
+/* ----------------- Barre de navigation ----------------- */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 25px;
+  background: #000; /* Fond de l'en-tête entièrement noir */
+  color: #27ae60;  /* Texte en vert */
+}
+
+.navbar .navbar-brand {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.navbar .navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar .navbar-links li a {
+  text-decoration: none;
+  color: #27ae60; /* Liens en vert */
+  font-size: 16px;
+}
+
+.navbar .navbar-links li a:hover {
+  text-decoration: underline;
+}
+
+/* ----------------- Conteneur principal ----------------- */
+.container-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+  min-height: 100vh;
+}
+
+.container {
+  width: 700px;
+  background: #fff;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+}
+
+/* ----------------- Styles du tableau ----------------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  text-align: left;
+  padding: 5px;
+  color: #fff;
+  /* Dégradé pour les en-têtes du tableau */
+  background: linear-gradient(to right, #27ae60, #000000);
+  font-weight: normal;
+}
+
+td {
+  padding: 10px 5px;
+}
+
+td input {
+  width: 40px;
+  height: 30px;
+  padding: 5px;
+}
+
+td a {
+  color: rgb(189, 48, 48);
+  font-size: 12px;
+}
+
+td img {
+  width: 80px;
+  height: 80px;
+  margin-right: 10px;
+}
+
+/* ----------------- Section Totaux ----------------- */
+.totale {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.totale table {
+  border-top: 3px solid #27ae60;
+  width: 100%;
+  max-width: 400px;
+}
+
+td:last-child,
+th:last-child {
+  text-align: right;
+}
+
+/* ----------------- Bouton "Payer" ----------------- */
+/* Centrage du bouton grâce à Flexbox */
+.btn-payer-link {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.btn-payer {
+  padding: 12px;
+  font-size: 17px;
+  background: linear-gradient(90deg, #27ae60, #000000);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-payer:hover {
+  background: linear-gradient(90deg, #000000, #27ae60);
+}
+
+/* ----------------- Responsive ----------------- */
+@media (max-width: 584px) {
+  .container {
+    width: 100%;
+  }
+}
+
+@media (max-width: 459px) {
+  .navbar .navbar-links {
+    flex-direction: column;
+  }
+}

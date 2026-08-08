@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="../">
+  <meta charset="UTF-8">
+  <title>Edit Profile - Effo-X</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="assets/images/biggerlogoeffo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css?v=20260808-2">
+  <link rel="stylesheet" href="assets/css/UserProfile.css">
+  <script type="module" src="https://cdn.shopify.com/storefront/web-components.js"></script>
+</head>
+<body class="account-theme">
+<shopify-store
+  store-domain="https://effo-x.myshopify.com"
+  public-access-token="79268ccf9a0efa1cbab2afcd2b96f637"
+  country="CA"
+  language="en"
+>
+  <div data-include="partials/header.html"></div>
+
+  <main class="profile-container">
+    <section class="profile-layout" data-scene>
+      <aside class="sidebar" data-scroll data-y="16,0" data-opacity="0.75,1">
+        <div class="user-header">
+          <div class="user-info">
+            <h2 data-profile-name>Effo-X Member</h2>
+            <p data-profile-email>—</p>
+            <p class="small">Role: <span data-profile-role>Member</span></p>
+          </div>
+        </div>
+      </aside>
+
+      <section class="edit-form" data-scroll data-y="12,0" data-opacity="0.85,1">
+        <h1>Update Your Profile</h1>
+        <p>Keep your contact details up to date so we can help you faster.</p>
+        <form id="profile-form" novalidate>
+          <div class="form-group">
+            <label for="profile-email">Email</label>
+            <input class="form-control" id="profile-email" name="email" type="email" readonly>
+          </div>
+          <div class="form-group">
+            <label for="profile-phone">Phone</label>
+            <input class="form-control" id="profile-phone" name="phone" type="tel" placeholder="+1 555 555 5555">
+          </div>
+          <div class="form-group">
+            <label for="profile-address">Address</label>
+            <textarea class="form-control" id="profile-address" name="address" rows="4" placeholder="Street, City, Province, Postal code"></textarea>
+          </div>
+          <button type="submit">Save Changes</button>
+        </form>
+        <p data-profile-status style="margin-top: 0.75rem;"></p>
+      </section>
+    </section>
+  </main>
+
+  <div data-include="partials/footer.html"></div>
+</shopify-store>
+
+<script src="assets/js/includes.js?v=20260808-2"></script>
+<script src="assets/js/header.js?v=20260808-2"></script>
+<script src="https://cdn.auth0.com/js/auth0-spa-js/2.0/auth0-spa-js.production.js"></script>
+<script src="assets/js/auth0-config.js"></script>
+<script src="assets/js/auth0-client.js"></script>
+<script src="assets/js/auth-protect.js"></script>
+<script src="assets/js/edit-profile.js"></script>
+</body>
+</html>

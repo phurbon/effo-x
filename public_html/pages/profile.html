@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="../">
+  <meta charset="UTF-8">
+  <title>User Profile - Effo-X</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="assets/images/biggerlogoeffo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css?v=20260808-2">
+  <link rel="stylesheet" href="assets/css/UserProfile.css">
+  <script type="module" src="https://cdn.shopify.com/storefront/web-components.js"></script>
+</head>
+<body class="account-theme">
+<shopify-store
+  store-domain="https://effo-x.myshopify.com"
+  public-access-token="79268ccf9a0efa1cbab2afcd2b96f637"
+  country="CA"
+  language="en"
+>
+  <div data-include="partials/header.html"></div>
+
+  <main class="profile-container">
+    <section class="profile-layout" data-scene>
+      <aside class="sidebar" data-scroll data-y="16,0" data-opacity="0.75,1">
+        <div class="user-header">
+          <div class="user-info">
+            <h2 data-profile-name>Effo-X Member</h2>
+            <p data-profile-email>—</p>
+            <p class="small">Role: <span data-profile-role>Member</span></p>
+          </div>
+        </div>
+      </aside>
+
+      <section class="info-section" data-scroll data-y="12,0" data-opacity="0.85,1">
+        <h1>Bienvenue sur votre profil</h1>
+        <p>Consultez vos informations de compte et vos commandes récentes. Mettez à jour vos informations personnelles directement ici.</p>
+
+        <ul class="profile-details">
+          <li><strong>Email:</strong> <span data-profile-email>—</span></li>
+          <li><strong>Adresse:</strong> <span data-profile-address>—</span></li>
+          <li><strong>Téléphone:</strong> <span data-profile-phone>—</span></li>
+        </ul>
+
+        <div class="button-group">
+          <a href="/orderHistory">Voir l'historique des commandes</a>
+          <a href="/editProfile">Mettre à jour le profil</a>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <div data-include="partials/footer.html"></div>
+</shopify-store>
+
+<script src="assets/js/includes.js?v=20260808-2"></script>
+<script src="assets/js/header.js?v=20260808-2"></script>
+<script src="https://cdn.auth0.com/js/auth0-spa-js/2.0/auth0-spa-js.production.js"></script>
+<script src="assets/js/auth0-config.js"></script>
+<script src="assets/js/auth0-client.js"></script>
+<script src="assets/js/auth-protect.js"></script>
+<script src="assets/js/profile.js"></script>
+</body>
+</html>

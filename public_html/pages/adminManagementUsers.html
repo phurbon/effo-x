@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="../">
+  <meta charset="UTF-8">
+  <title>User Management - Effo-X</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="assets/images/biggerlogoeffo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css?v=20260808-2">
+  <link rel="stylesheet" href="assets/css/admin.css">
+  <script type="module" src="https://cdn.shopify.com/storefront/web-components.js"></script>
+</head>
+<body>
+<shopify-store
+  store-domain="https://effo-x.myshopify.com"
+  public-access-token="79268ccf9a0efa1cbab2afcd2b96f637"
+  country="CA"
+  language="en"
+>
+  <div data-include="partials/header.html"></div>
+
+  <main class="admin-container">
+    <h1>Gestion des utilisateurs</h1>
+    <p class="admin-note">Démo statique. Remplacez par les données de votre application pour activer la gestion des comptes.</p>
+
+    <table>
+      <thead>
+      <tr>
+        <th>Nom d'utilisateur</th>
+        <th>Email</th>
+        <th>Rôle</th>
+        <th>Téléphone</th>
+        <th>Adresse</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>admin</td>
+        <td>admin@effo-x.com</td>
+        <td>Administrateur</td>
+        <td>+1 514-555-0100</td>
+        <td>123 Rue Sainte-Catherine, Montréal</td>
+        <td>
+          <button disabled>Modifier</button>
+          <button disabled>Supprimer</button>
+        </td>
+      </tr>
+      <tr>
+        <td>client.demo</td>
+        <td>client.demo@example.com</td>
+        <td>Client</td>
+        <td>+1 438-555-0142</td>
+        <td>45 Boulevard René-Lévesque, Montréal</td>
+        <td>
+          <button disabled>Modifier</button>
+          <button disabled>Supprimer</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </main>
+
+  <div data-include="partials/footer.html"></div>
+</shopify-store>
+
+<script src="assets/js/includes.js?v=20260808-2"></script>
+<script src="assets/js/header.js?v=20260808-2"></script>
+</body>
+</html>

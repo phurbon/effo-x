@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="../">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Events Billboard - Effo-X</title>
+  <link rel="icon" type="image/png" href="assets/images/biggerlogoeffo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css?v=20260808-2">
+  <link rel="stylesheet" href="assets/css/events.css">
+  <script type="module" src="https://cdn.shopify.com/storefront/web-components.js"></script>
+</head>
+<body>
+<shopify-store
+  store-domain="https://effo-x.myshopify.com"
+  public-access-token="79268ccf9a0efa1cbab2afcd2b96f637"
+  country="CA"
+  language="en"
+>
+  <div data-include="partials/header.html"></div>
+
+  <main class="events-page">
+    <section class="events-hero">
+      <p class="eyebrow">Effo-X on tour</p>
+      <h1>Events Billboard</h1>
+      <p class="lede">
+        We are partnering with training facilities, wellness collectives, and competition promoters to build
+        live Effo-X experiences. Every stop blends product labs, coaching, and community stories so athletes can feel the gear in motion.
+      </p>
+      <div class="hero-grid">
+        
+        <article class="metric-card">
+          <p class="metric">12</p>
+          <p class="label">partner collectives hosting the tour</p>
+        </article>
+        <article class="metric-card">
+          <p class="metric">∞</p>
+          <p class="label">moments to connect with the Effo-X crew</p>
+        </article>
+      </div>
+      <div class="hero-actions">
+        <a class="button primary" href="#billboard">See the lineup</a>
+        <a class="button ghost" href="mailto:partnerships@effo-x.com?subject=Effo-X%20Events%20Partnership">Partner with us</a>
+      </div>
+    </section>
+
+    <section class="event-billboard" id="billboard" aria-label="Upcoming event updates">
+      <div class="section-header">
+        <p class="eyebrow">Billboard</p>
+        <h2>Meet us next</h2>
+        <p>
+          Every event created in Simply Events appears here automatically. Choose a highlighted day to see the details.
+        </p>
+      </div>
+      <div class="events-calendar" data-events-calendar aria-live="polite">
+        <p class="events-calendar__loading">Loading the event calendar…</p>
+      </div>
+    </section>
+
+    <section class="events-roadmap" aria-label="Events roadmap">
+      <div class="roadmap-card">
+        <p class="eyebrow">In development</p>
+        <h3>Prairie Power Lab</h3>
+        <p>Calgary • October</p>
+        <p class="muted">Looking for partner gyms & wellness collectives to co-host a West Canada residency.</p>
+      </div>
+      <div class="roadmap-card">
+        <p class="eyebrow">Looking ahead</p>
+        <h3>Effo-X Weekender</h3>
+        <p>Montreal HQ • November</p>
+        <p class="muted">Community-run workouts, prototyping studio tours, and a marketplace curated by our ambassadors.</p>
+      </div>
+      <div class="roadmap-card action">
+        <p class="eyebrow">Want to host?</p>
+        <h3>Bring Effo-X to your event</h3>
+        <p>Share your audience, venue specs, and ideal dates. We build the rest.</p>
+        <a class="button primary" href="mailto:partnerships@effo-x.com?subject=Host%20an%20Effo-X%20event">Start the brief</a>
+      </div>
+    </section>
+
+    
+
+   
+  </main>
+
+  <div data-include="partials/footer.html"></div>
+</shopify-store>
+
+<script src="assets/js/includes.js?v=20260808-2"></script>
+<script src="assets/js/header.js?v=20260808-2"></script>
+<script src="assets/js/events-calendar.js"></script>
+</body>
+</html>

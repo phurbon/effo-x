@@ -1,0 +1,140 @@
+:root {
+    --green: #27ae60;
+    --black: #130f40;
+    --light-color: #666;
+    --box-shadow: 0 .5rem 1.5rem rgba(0,0,0,0.1);
+}
+
+body {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: bold;
+    background-color: #f0f8f0;
+    color: #130f40;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.product-page {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.product-container {
+    display: flex;
+    gap: 3rem;
+    align-items: flex-start;
+}
+
+.main-image img {
+    width: 600px;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+}
+
+.product-info {
+    flex: 1;
+}
+
+.product-info h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--black);
+}
+
+.labels span {
+    display: inline-block;
+    margin-right: 1rem;
+    font-size: 1.2rem;
+    color: var(--light-color);
+}
+
+.price {
+    font-size: 2.5rem;
+    color: var(--black);
+    margin: 1rem 0;
+}
+
+.main-action {
+    background-color: var(--green);
+    color: white;
+    padding: 1.5rem 2rem;
+    border: none;
+    font-size: 1.6rem;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-weight: bold;
+}
+
+.main-action:hover {
+    background-color: #fff;
+    color: var(--green);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+.note {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    color: var(--light-color);
+}
+
+.thumbnail-strip {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.thumbnail-strip img {
+    width: 100px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: var(--box-shadow);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 5rem auto 0 auto;  /* Adjust this value for more or less space */
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.product-card {
+    background: #fff;
+
+}
+
+
+/* Breadcrumb Navigation Styles */
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    color: var(--light-color);
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.breadcrumb-link {
+    color: var(--green);
+    text-decoration: none;
+}
+
+.breadcrumb-link:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb-current {
+    color: var(--light-color);
+}
+

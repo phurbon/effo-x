@@ -1,0 +1,168 @@
+:root {
+    --green: #27ae60;
+    --black: #130f40;
+    --light-color: #666;
+    --box-shadow: 0 .5rem 1.5rem rgba(0,0,0,0.1);
+    --border: .2rem solid rgba(0,0,0,0.1);
+    --outline: .1rem solid rgba(0,0,0,0.1);
+    --outline-hover: .2rem solid var(--green);
+}
+
+.checkout-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 2rem;
+    font-family: 'Josefin Sans', sans-serif;
+    margin-top: 8rem;
+    flex-wrap: wrap;
+}
+
+.product-preview {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-height: 75vh;
+    overflow-y: auto;
+    padding-right: 1rem;
+    align-items: center;
+    padding-top: 1rem;
+}
+
+.product-preview > * {
+    width: 100%;
+}
+
+.product-preview img {
+    max-width: 400px;
+    border-radius: 8px;
+}
+
+.checkout-item {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: var(--box-shadow);
+    outline: var(--outline);
+    width: fit-content;
+    max-width: 100%;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+
+.checkout-item img {
+    width: 120px;
+    height: auto;
+    border-radius: 8px;
+}
+
+.checkout-item-title {
+    font-weight: 600;
+    font-size: 1.8rem;
+    margin-bottom: .4rem;
+}
+
+.checkout-item-copy {
+    color: var(--light-color);
+    font-size: 1.4rem;
+}
+
+.checkout-item p {
+    margin: 0;
+    font-size: 1.4rem;
+    color: var(--black);
+}
+
+.payment-section {
+    width: 40%;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+    outline: var(--outline);
+}
+
+.payment-summary p {
+    margin: 8px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.payment-summary .total {
+    font-size: 1.5em;
+    color: #222;
+}
+
+.payment-options a {
+    display: block;
+    margin: 10px 0;
+    padding: 10px;
+    background: var(--green);
+    border: 2px solid var(--green);
+    text-decoration: none;
+    color: white;
+    border-radius: 5px;
+    transition: background 0.3s, color 0.3s;
+    text-align: center;
+    font-size: 1.6rem;
+}
+
+.payment-options a:hover {
+    background: white;
+    color: var(--green);
+}
+
+.button-progress {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--light-color);
+    font-size: 1.4rem;
+    margin-top: 1rem;
+}
+
+.button-progress[hidden] {
+    display: none;
+}
+
+.spinner {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid #d3d7dd;
+    border-top-color: var(--green);
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.checkout-status {
+    margin-top: 1rem;
+    font-size: 1.4rem;
+    color: var(--black);
+}
+
+.checkout-status[data-state="error"] {
+    color: #c0392b;
+}
+
+.checkout-note.subtle {
+    color: var(--light-color);
+    font-size: 1.3rem;
+}
+
+@media (max-width: 900px) {
+    .checkout-container {
+        flex-direction: column;
+    }
+
+    .payment-section {
+        width: 100%;
+    }
+}

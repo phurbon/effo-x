@@ -1,0 +1,54 @@
+
+:root {
+    --green: #27ae60;
+    --black: #130f40;
+    --light-color: #666;
+    --box-shadow: 0 .5rem 1.5rem rgba(0,0,0,0.1);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 2rem;
+    background-color: #e8f5e9;
+    color: var(--black);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+h1 {
+    font-size: 3rem;
+    color: var(--green);
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    background-color: var(--green);
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    font-size: 1.4rem;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #219150;
+}
+
+section {
+    text-align: center;
+    font-size: 1.6rem;
+    color: var(--light-color);
+}

@@ -1,0 +1,65 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Mar 5, 2025, 10:47:59 a.m.
+    Author     : pierre-luchurbon
+*/
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    background-color: #000;
+    color: #27ae60;
+    position:relative;
+    top: 0;
+    transition: top 0.3s;
+    z-index: 1000;
+}
+
+.navbar-brand {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.navbar-links li {
+    position: relative;
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.navbar-links a {
+    color: #27ae60;
+    text-decoration: none;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    transition: color 0.3s;
+    pointer-events: auto;
+}
+
+.navbar-links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 100%;
+    height: 3px;
+    background-color: #27ae60;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+    transform-origin: left;
+}
+
+.navbar-links a:hover::after {
+    transform: scaleX(1);
+
+}
+
+
+
+

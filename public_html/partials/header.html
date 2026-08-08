@@ -1,0 +1,145 @@
+<shopify-cart id="shopify-cart"></shopify-cart>
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-left">
+      <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navbar-menu">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+      <div class="navbar-brand">
+        <a href="index.html" aria-label="Effo-X home">
+          <img class="logo site-logo-icon" src="assets/images/biggerlogoeffo.png" alt="" width="40" height="40">
+          <img class="site-logo" src="assets/images/effo-x-text-logo.png" alt="Effo-X" width="85" height="48">
+        </a>
+      </div>
+    </div>
+
+    <div id="navbar-menu">
+      <ul class="navbar-links primary-links">
+        <li class="menu-item desktop-only" data-panel="products">
+          <button class="menu-trigger desktop-only" aria-expanded="false" aria-controls="panel-products">Our Products</button>
+        </li>
+
+        <li class="menu-item desktop-only" data-panel="about">
+          <button class="menu-trigger desktop-only" aria-expanded="false" aria-controls="panel-about">About Us</button>
+        </li>
+
+        <li class="menu-item desktop-only" data-panel="search">
+          <button class="menu-trigger" aria-expanded="false" aria-controls="panel-search">Search</button>
+        </li>
+
+        <li class="menu-item mobile-only mobile-nav-accordion" aria-label="Shop pages">
+          <details class="mobile-accordion" open>
+            <summary class="mobile-accordion__summary">
+              <span>Shop</span>
+              <span class="mobile-accordion__chevron" aria-hidden="true"></span>
+            </summary>
+            <div class="mobile-accordion__panel mobile-link-grid">
+              <a href="pages/produit.html">All Products</a>
+              <a href="pages/ShopifyXcellenceProducts.html">Xcellence</a>
+              <a href="pages/ShopifyFlexProducts.html">Flex</a>
+              <a href="pages/ShopifyFocusProducts.html">Focus</a>
+              <a href="pages/ShopifyFinExProducts.html">Fin-Ex</a>
+              <a href="pages/ShopifyFusionProducts.html">Fusion</a>
+              <a href="pages/ShopifyFlareProducts.html">Flare</a>
+            </div>
+          </details>
+        </li>
+
+        <li class="menu-item mobile-only mobile-nav-accordion" aria-label="Explore pages">
+          <details class="mobile-accordion">
+            <summary class="mobile-accordion__summary">
+              <span>Explore</span>
+              <span class="mobile-accordion__chevron" aria-hidden="true"></span>
+            </summary>
+            <div class="mobile-accordion__panel mobile-link-grid">
+              <a href="pages/searchPage.html">Search</a>
+              <a href="pages/aboutUs.html">About Us</a>
+              <a href="pages/blogHome.html">Blog</a>
+              <a href="pages/events.html">Events</a>
+              <a href="pages/ourPartners.html">Our Partners</a>
+              <a href="pages/custom-apparel.html">Custom Apparel</a>
+            </div>
+          </details>
+        </li>
+      </ul>
+      <ul class="navbar-links secondary-links" data-auth-nav>
+        <li><button type="button" onclick="document.getElementById('shopify-cart')?.showModal()">Cart</button></li>
+        <li class="auth-guest">
+          <a href="pages/login.html">Log In / Sign Up</a>
+        </li>
+        <li class="menu-item auth-user" data-panel="account" hidden>
+          <button class="menu-trigger auth-trigger" type="button" aria-expanded="false" aria-controls="panel-account">
+            <span data-auth-name>Account</span>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="nav-backdrop" aria-hidden="true"></div>
+
+  <div class="mega mega-search" id="panel-search" role="search" aria-label="Site search" hidden>
+    <form action="pages/searchPage.html" method="get" class="search-form">
+      <div class="search-row">
+        <span class="search-icon" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+            <path d="M11 4a7 7 0 1 1 0 14a7 7 0 0 1 0-14zm0-2a9 9 0 1 0 0 18a9 9 0 0 0 0-18Zm10.707 19.293l-5.387-5.387l-1.414 1.414l5.387 5.387a1 1 0 0 0 1.414-1.414Z" fill="currentColor"/>
+          </svg>
+        </span>
+        <input id="global-search-input" name="query" type="search" placeholder="Search products..." autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search" />
+      </div>
+    </form>
+    <div class="quick-links">
+      <p class="kicker">Quick Links</p>
+      <a href="pages/ShopifyFlexProducts.html">Flex Collection</a>
+      <a href="pages/ShopifyFocusProducts.html">Focus Collection</a>
+      <a href="pages/ShopifyFinExProducts.html">Fin-Ex Collection</a>
+      <a href="pages/ShopifyFusionProducts.html">Fusion Collection</a>
+      <a href="pages/ShopifyFlareProducts.html">Flare Collection</a>
+      <button type="button" onclick="document.getElementById('shopify-cart')?.showModal()">Your Cart</button>
+      <a href="pages/aboutUs.html">About Us</a>
+    </div>
+  </div>
+
+  <div class="mega" id="panel-products" role="region" aria-label="Products menu" hidden>
+    <div class="mega-col">
+      <p class="kicker">Explore Products</p>
+      <a href="pages/ShopifyXcellenceProducts.html">XCELLENCE</a>
+      <a href="pages/ShopifyFlexProducts.html">FLEX</a>
+      <a href="pages/ShopifyFocusProducts.html">FOCUS</a>
+      <a href="pages/ShopifyFinExProducts.html">FIN-EX</a>
+      <a href="pages/ShopifyFusionProducts.html">FUSION</a>
+      <a href="pages/ShopifyFlareProducts.html">FLARE</a>
+    </div>
+    <div class="mega-col">
+      <p class="kicker">Help</p>
+      <a href="pages/aboutUs.html#support">Support</a>
+      <a href="pages/aboutUs.html#support">FAQ</a>
+    </div>
+  </div>
+
+  <div class="mega" id="panel-about" role="region" aria-label="About menu" hidden>
+    <div class="mega-col">
+      <p class="kicker">Effo-X</p>
+      <a href="pages/aboutUs.html">About Us</a>
+      <a href="pages/ourPartners.html">Our Partners</a>
+      <a href="pages/custom-apparel.html">Custom Apparel</a>
+    </div>
+    <div class="mega-col">
+      <p class="kicker">Community</p>
+      <a href="pages/blogHome.html">Blog</a>
+      <a href="pages/events.html">Events Billboard</a>
+    </div>
+  </div>
+
+  <div class="mega mega-account" id="panel-account" role="region" aria-label="Account menu" hidden>
+    <div class="mega-col">
+      <p class="kicker">Account</p>
+      <a href="pages/profile.html">Profile</a>
+      <a href="pages/orderHistory.html">Order History</a>
+      <button type="button" class="menu-action" data-auth-logout>Log Out</button>
+    </div>
+  </div>
+</header>

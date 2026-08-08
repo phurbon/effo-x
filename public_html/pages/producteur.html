@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="../">
+  <meta charset="UTF-8">
+  <title>Producer Dashboard - Effo-X</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="assets/images/biggerlogoeffo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css?v=20260808-2">
+  <link rel="stylesheet" href="assets/css/producteur.css">
+  <script type="module" src="https://cdn.shopify.com/storefront/web-components.js"></script>
+</head>
+<body>
+<shopify-store
+  store-domain="https://effo-x.myshopify.com"
+  public-access-token="79268ccf9a0efa1cbab2afcd2b96f637"
+  country="CA"
+  language="en"
+>
+  <div data-include="partials/header.html"></div>
+
+  <div class="producteur-container">
+    <h1 class="producteur-header">Bienvenue sur votre tableau de bord Producteur</h1>
+
+    <section class="producteur-section">
+      <h2>Mes Produits</h2>
+      <p>Consultez et gérez vos produits Shopify directement depuis la collection Flex.</p>
+      <div class="button-group">
+        <a href="/ShopifyFlexProducts">Voir la collection</a>
+      </div>
+    </section>
+
+    <section class="producteur-section">
+      <h2>Commandes Reçues</h2>
+      <p>Accédez à la liste des commandes via votre compte Shopify pour suivre la progression des livraisons.</p>
+      <div class="button-group">
+        <a href="https://effo-x.myshopify.com/admin/orders" target="_blank" rel="noopener">Ouvrir Shopify</a>
+      </div>
+    </section>
+
+    <section class="producteur-section">
+      <h2>Statistiques</h2>
+      <p>Visualisez vos ventes et autres données clés dans Shopify Analytics pour rester aligné sur vos objectifs.</p>
+      <div class="button-group">
+        <a href="https://effo-x.myshopify.com/admin/reports/dashboard" target="_blank" rel="noopener">Voir les statistiques</a>
+      </div>
+    </section>
+  </div>
+
+  <div data-include="partials/footer.html"></div>
+</shopify-store>
+
+<script src="assets/js/includes.js?v=20260808-2"></script>
+<script src="assets/js/header.js?v=20260808-2"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="../">
+  <meta charset="UTF-8">
+  <title>Checkout - Effo-X</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="assets/images/biggerlogoeffo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css?v=20260808-2">
+  <link rel="stylesheet" href="assets/css/checkout.css">
+  <script type="module" src="https://cdn.shopify.com/storefront/web-components.js"></script>
+  <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+<shopify-store
+  store-domain="https://effo-x.myshopify.com"
+  public-access-token="79268ccf9a0efa1cbab2afcd2b96f637"
+  country="CA"
+  language="en"
+>
+  <div data-include="partials/header.html"></div>
+
+  <main class="checkout-container stripe-checkout">
+    <section class="product-preview">
+      <h1>Stripe-powered checkout</h1>
+      <p>We process payments with Stripe so your card and wallet details stay secure. You’ll be redirected to Stripe Checkout to finish payment.</p>
+      <div class="checkout-item">
+        <img src="assets/images/biggerlogoeffo.png" alt="Effo-X logo">
+        <div>
+          <p class="checkout-item-title">Effo-X Order</p>
+          <p class="checkout-item-copy">Review your cart, confirm shipping, and pay with card, Apple Pay, Google Pay, or Link by Stripe.</p>
+        </div>
+      </div>
+    </section>
+
+    <aside class="payment-section">
+      <h2>Secure Stripe Checkout</h2>
+      <p>Click below to create a Stripe Checkout session and complete your purchase.</p>
+      <button
+        class="main-action"
+        type="button"
+        data-stripe-checkout
+        data-checkout-endpoint="/api/create-checkout-session"
+        data-stripe-publishable-key=""
+      >
+        Pay securely with Stripe
+      </button>
+      <div class="button-progress" data-checkout-spinner hidden>
+        <span class="spinner" aria-hidden="true"></span>
+        <span>Preparing payment…</span>
+      </div>
+      <p class="checkout-status" data-checkout-status>Ready when you are.</p>
+      <p class="checkout-note">Need help? Email <a href="mailto:support@effo-x.com">support@effo-x.com</a> and we’ll assist right away.</p>
+      <p class="checkout-note subtle">Set your Stripe publishable key and ensure <code>/api/create-checkout-session</code> returns a Checkout Session ID.</p>
+    </aside>
+  </main>
+
+  <div data-include="partials/footer.html"></div>
+
+  <script src="assets/js/includes.js?v=20260808-2"></script>
+  <script src="assets/js/header.js?v=20260808-2"></script>
+  <script src="assets/js/stripe-checkout.js"></script>
+</shopify-store>
+</body>
+</html>

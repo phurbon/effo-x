@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="../">
+  <meta charset="UTF-8">
+  <title>All Collections - Effo-X</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="assets/images/biggerlogoeffo.png">
+  <link rel="stylesheet" href="assets/css/styles.css?v=20260808-2">
+  <link rel="stylesheet" href="assets/css/produit.css">
+  <script type="module" src="https://cdn.shopify.com/storefront/web-components.js"></script>
+</head>
+<body class="products-theme">
+<shopify-store
+  store-domain="https://effo-x.myshopify.com"
+  public-access-token="79268ccf9a0efa1cbab2afcd2b96f637"
+  country="CA"
+  language="en"
+>
+  <div data-include="partials/header.html"></div>
+
+  <main class="products-page products-hub" data-scene>
+    <shopify-cart id="shopify-cart"></shopify-cart>
+
+    <section class="collection-hero" data-scene>
+      <div class="collection-hero__content" data-scroll data-y="20,0" data-opacity="0.7,1">
+        <p class="collection-kicker">Effo-X Catalog</p>
+        <h1 class="collection-title">All Collections</h1>
+        <div class="collection-desc">
+          <p>Browse every Effo-X category in one place. Each section is grouped by collection so product discovery feels clean and natural.</p>
+        </div>
+        <div class="collection-meta">
+          <span class="meta-pill">Category View</span>
+          <span class="meta-pill">Shop by Collection</span>
+          <span class="meta-pill">Quick Product Modal</span>
+        </div>
+      </div>
+      <div class="collection-hero__stamp" data-scroll data-y="12,0" data-opacity="0.6,1">Focus - On - Excellence</div>
+    </section>
+
+    <section class="catalog-groups" data-scene>
+      <shopify-context type="collection" handle="Xcellence">
+        <template>
+          <section class="collection-grid catalog-group" data-scroll data-y="14,0" data-opacity="0.85,1">
+            <div class="collection-grid__head">
+              <h2>XCELLENCE</h2>
+              <p>Statement essentials designed for everyday push and progression.</p>
+            </div>
+            <div class="product-grid" data-source="shopify">
+              <shopify-list-context type="product" query="collection.products" first="12">
+                <template>
+                  <article class="product-card">
+                    <div class="img-wrap">
+                      <a class="product__link" onclick="document.getElementById('product-modal').showModal(); document.getElementById('product-modal-context').update(event);">
+                        <shopify-media width="450" height="450" query="product.featuredImage"></shopify-media>
+                      </a>
+                    </div>
+                    <div class="meta">
+                      <h3 class="brand">
+                        <a class="product__link" onclick="document.getElementById('product-modal').showModal(); document.getElementById('product-modal-context').update(event);">
+                          <shopify-data query="product.title"></shopify-data>
+                        </a>
+                      </h3>
+                      <p class="name"><shopify-data query="product.description"></shopify-data></p>
+                      <p class="price"><shopify-money query="product.selectedOrFirstAvailableVariant.price"></shopify-money></p>
+                      <div class="badges">
+                        <span class="badge"><shopify-data query="product.productType"></shopify-data></span>
+                      </div>
+                    </div>
+                  </article>
+                </template>
+              </shopify-list-context>
+            </div>
+          </section>
+        </template>
+      </shopify-context>
+
+      <shopify-context type="collection" handle="Flex">
+        <template>
+          <section class="collection-grid catalog-group" data-scroll data-y="14,0" data-opacity="0.85,1">
+            <div class="collection-grid__head">
+              <h2>FLEX</h2>
+              <p>Adaptive pieces with mobility-first cuts for training and recovery.</p>
+            </div>
+            <div class="product-grid" data-source="shopify">
+              <shopify-list-context type="product" query="collection.products" first="12">
+                <template>
+                  <article class="product-card">
+                    <div class="img-wrap">
+                      <a class="product__link" onclick="document.getElementById('product-modal').showModal(); document.getElementById('product-modal-context').update(event);">
+                        <shopify-media width="450" height="450" query="product.featuredImage"></shopify-media>
+                      </a>
+                    </div>
+                    <div class="meta">
+                      <h3 class="brand">
+                        <a class="product__link" onclick="document.getElementById('product-modal').showModal(); document.getElementById('product-modal-context').update(event);">
+                          <shopify-data query="product.title"></shopify-data>
+                        </a>
+                      </h3>
+                      <p class="name"><shopify-data query="product.description"></shopify-data></p>
+                      <p class="price"><shopify-money query="product.selectedOrFirstAvailableVariant.price"></shopify-money></p>
+                      <div class="badges">
+                        <span class="badge"><shopify-data query="product.productType"></shopify-data></span>
+                      </div>
+                    </div>
+                  </article>
+                </template>
+              </shopify-list-context>
+            </div>
+          </section>
+        </template>
+      </shopify-context>
+
+      <shopify-context type="collection" handle="Focus">
+        <template>
+          <section class="collection-grid catalog-group" data-scroll data-y="14,0" data-opacity="0.85,1">
+            <div class="collection-grid__head">
+              <h2>FOCUS</h2>
+              <p>Clean silhouettes built for concentration, routine, and consistency.</p>
+            </div>
+            <div class="product-grid" data-source="shopify">
+              <shopify-list-context type="product" query="collection.products" first="12">
+                <template>
+                  <article class="product-card">
+                    <div class="img-wrap">
+                      <a class="product__link" onclick="document.getElementById('product-modal').showModal(); document.getElementById('product-modal-context').update(event);">
+                        <shopify-media width="450" height="450" query="product.featuredImage"></shopify-media>
+                      </a>
+                    </div>
+                    <div class="meta">
+                      <h3 class="brand">
+                        <a class="product__link" onclick="document.getElementById('product-modal').showModal(); document.getElementById('product-modal-context').update(event);">
+                          <shopify-data query="product.title"></shopify-data>
+                        </a>
+                      </h3>
+                      <p class="name"><shopify-data query="product.description"></shopify-data></p>
+                      <p class="price"><shopify-money query="product.selectedOrFirstAvailableVariant.price"></shopify-money></p>
+                      <div class="badges">
+                        <span class="badge"><shopify-data query="product.productType"></shopify-data></span>
+                      </div>
+                    </div>
+                  </article>
+                </template>
+              </shopify-list-context>
+            </div>
+          </section>
+        </template>
+      </shopify-context>
+
+      <shopify-context type="collection" handle="Fin-Ex">
+        <template>
+          <section class="collection-grid catalog-group" data-scroll data-y="14,0" data-opacity="0.85,1">
+            <div class="collection-grid__head">
+              <h2>FIN-EX</h2>
+              <p>Precision-engineered garments for impact sessions and high output.</p>
+            </div>
+            <div class="product-grid" data-source="shopify">
+              <shopify-list-context type="product" query="collection.products" first="12">
+                <template>
+                  <article class="product-card">
+                    <div class="img-wrap">
+                      <a class="product__link" onclick="document.getElementById('product-modal').showModal(); document.getElementById('product-modal-context').update(event);">
+                        <shopify-media width="450" height="450" query="product.featuredImage"></shopify-media>
+                      </a>
+                    </div>
+                    <div class="meta">
+                      <h3 class="brand">
+                        <a class="product__link" onclick="document.getElementById('product-modal').showModal(); document.getElementById('product-modal-context').update(event);">
+                          <shopify-data query="product.title"></shopify-data>
+                        </a>
+                      </h3>
+                      <p class="name"><shopify-data query="product.description"></shopify-data></p>
+                      <p class="price"><shopify-money query="product.selectedOrFirstAvailableVariant.price"></shopify-money></p>
+                      <div class="badges">
+                        <span class="badge"><shopify-data query="product.productType"></shopify-data></span>
+                      </div>
+                    </div>
+                  </article>
+                </template>
+              </shopify-list-context>
+            </div>
+          </section>
+        </template>
+      </shopify-context>
+
+      <shopify-context type="collection" handle="Fusion">
+        <template>
+          <section class="collection-grid catalog-group" data-scroll data-y="14,0" data-opacity="0.85,1">
+            <div class="collection-grid__head">
+              <h2>FUSION</h2>
+              <p>Street-to-training crossover with versatile design language.</p>
+            </div>
+            <div class="product-grid" data-source="shopify">
+              <shopify-list-context type="product" query="collection.products" first="12">
+                <template>
+                  <article class="product-card">
+                    <div class="img-wrap">
+                      <a class="product__link" onclick="document.getElementById('product-modal').showModal(); document.getElementById('product-modal-context').update(event);">
+                        <shopify-media width="450" height="450" query="product.featuredImage"></shopify-media>
+                      </a>
+                    </div>
+                    <div class="meta">
+                      <h3 class="brand">
+                        <a class="product__link" onclick="document.getElementById('product-modal').showModal(); document.getElementById('product-modal-context').update(event);">
+                          <shopify-data query="product.title"></shopify-data>
+                        </a>
+                      </h3>
+                      <p class="name"><shopify-data query="product.description"></shopify-data></p>
+                      <p class="price"><shopify-money query="product.selectedOrFirstAvailableVariant.price"></shopify-money></p>
+                      <div class="badges">
+                        <span class="badge"><shopify-data query="product.productType"></shopify-data></span>
+                      </div>
+                    </div>
+                  </article>
+                </template>
+              </shopify-list-context>
+            </div>
+          </section>
+        </template>
+      </shopify-context>
+
+      <shopify-context type="collection" handle="Flare">
+        <template>
+          <section class="collection-grid catalog-group" data-scroll data-y="14,0" data-opacity="0.85,1">
+            <div class="collection-grid__head">
+              <h2>FLARE</h2>
+              <p>Bold visual expression designed to stand out in motion.</p>
+            </div>
+            <div class="product-grid" data-source="shopify">
+              <shopify-list-context type="product" query="collection.products" first="12">
+                <template>
+                  <article class="product-card">
+                    <div class="img-wrap">
+                      <a class="product__link" onclick="document.getElementById('product-modal').showModal(); document.getElementById('product-modal-context').update(event);">
+                        <shopify-media width="450" height="450" query="product.featuredImage"></shopify-media>
+                      </a>
+                    </div>
+                    <div class="meta">
+                      <h3 class="brand">
+                        <a class="product__link" onclick="document.getElementById('product-modal').showModal(); document.getElementById('product-modal-context').update(event);">
+                          <shopify-data query="product.title"></shopify-data>
+                        </a>
+                      </h3>
+                      <p class="name"><shopify-data query="product.description"></shopify-data></p>
+                      <p class="price"><shopify-money query="product.selectedOrFirstAvailableVariant.price"></shopify-money></p>
+                      <div class="badges">
+                        <span class="badge"><shopify-data query="product.productType"></shopify-data></span>
+                      </div>
+                    </div>
+                  </article>
+                </template>
+              </shopify-list-context>
+            </div>
+          </section>
+        </template>
+      </shopify-context>
+    </section>
+
+    <dialog id="product-modal" class="product-modal" role="dialog" aria-modal="true" aria-labelledby="product-modal-title">
+      <shopify-context id="product-modal-context" type="product" wait-for-update>
+        <template>
+          <div class="product-modal__container">
+            <div class="product-modal__close-container">
+              <button class="product-modal__close" type="button" aria-label="Close" onclick="document.getElementById('product-modal').close();">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </button>
+            </div>
+            <div class="product-modal__content">
+              <div class="product-modal__layout">
+                <div class="product-modal__media">
+                  <div class="modal-gallery" data-modal-gallery>
+                    <div class="modal-gallery__main">
+                      <img data-modal-main alt="">
+                    </div>
+                    <div class="modal-gallery__thumbs" data-modal-thumbs></div>
+                    <span data-modal-handle hidden><shopify-data query="product.handle"></shopify-data></span>
+                  </div>
+                </div>
+                <div class="product-modal__details">
+                  <div class="product-modal__header">
+                    <h1 class="product-modal__title" id="product-modal-title">
+                      <shopify-data query="product.title"></shopify-data>
+                    </h1>
+                    <div class="product-modal__price-container">
+                      <shopify-money query="product.selectedOrFirstAvailableVariant.price"></shopify-money>
+                      <shopify-money class="product-modal__compare-price" query="product.selectedOrFirstAvailableVariant.compareAtPrice"></shopify-money>
+                    </div>
+                  </div>
+                  <shopify-variant-selector></shopify-variant-selector>
+                  <div class="product-modal__buttons">
+                    <button class="product-modal__add-button" onclick="const cart=document.getElementById('shopify-cart'); cart?.addLine(event); cart?.showModal(); document.getElementById('product-modal').close();" shopify-attr--disabled="!product.selectedOrFirstAvailableVariant.availableForSale">Add to cart</button>
+                    <button class="product-modal__buy-button" onclick="document.querySelector('shopify-store')?.buyNow(event)" shopify-attr--disabled="!product.selectedOrFirstAvailableVariant.availableForSale">Buy now</button>
+                  </div>
+                  <div class="product-modal__description">
+                    <span class="product-modal__description-text">
+                      <shopify-data query="product.descriptionHtml"></shopify-data>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </template>
+      </shopify-context>
+    </dialog>
+  </main>
+
+  <div data-include="partials/footer.html"></div>
+</shopify-store>
+
+<script src="assets/js/includes.js?v=20260808-2"></script>
+<script src="assets/js/header.js?v=20260808-2"></script>
+</body>
+</html>

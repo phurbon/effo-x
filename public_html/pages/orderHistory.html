@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="../">
+  <meta charset="UTF-8">
+  <title>Order History - Effo-X</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="assets/images/biggerlogoeffo.png">
+  <link rel="stylesheet" href="assets/css/styles.css?v=20260808-2">
+  <link rel="stylesheet" href="assets/css/orderHistory.css">
+  <script type="module" src="https://cdn.shopify.com/storefront/web-components.js"></script>
+</head>
+<body class="orders-theme">
+<shopify-store
+  store-domain="https://effo-x.myshopify.com"
+  public-access-token="79268ccf9a0efa1cbab2afcd2b96f637"
+  country="CA"
+  language="en"
+>
+  <div data-include="partials/header.html"></div>
+
+  <main class="orders-page">
+    <section class="orders-hero" data-scene>
+      <div class="orders-hero__content" data-scroll data-y="20,0" data-opacity="0.7,1">
+        <p class="eyebrow">Account</p>
+        <h1>Order History</h1>
+        <p class="lede">Review your Effo‑X purchases and track the details at a glance.</p>
+      </div>
+      <div class="orders-hero__panel" data-scroll data-y="16,0" data-opacity="0.75,1">
+        <div>
+          <p class="panel-kicker">Status</p>
+          <h3>Orders in one place</h3>
+          <p>New orders appear as soon as they are confirmed.</p>
+        </div>
+        <div class="panel-metrics">
+          <div>
+            <span data-orders-count>0</span>
+            <small>Orders</small>
+          </div>
+          <div>
+            <span>24/7</span>
+            <small>Support</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="orders-table-card" data-scene>
+      <div class="orders-table-head" data-scroll data-y="14,0" data-opacity="0.75,1">
+        <div>
+          <p class="eyebrow">Your Orders</p>
+          <h2>Recent Orders</h2>
+          <p class="orders-sub">Orders placed with your Effo‑X account will appear here.</p>
+        </div>
+        <div class="orders-count" data-orders-count>0</div>
+      </div>
+      <div class="orders-table-wrap" data-scroll data-y="12,0" data-opacity="0.85,1">
+        <table class="orders-table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Amount</th>
+              <th>Order ID</th>
+            </tr>
+          </thead>
+          <tbody data-orders-body>
+            <tr><td colspan="3">Loading orders...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <div data-include="partials/footer.html"></div>
+</shopify-store>
+
+<script src="assets/js/includes.js?v=20260808-2"></script>
+<script src="assets/js/header.js?v=20260808-2"></script>
+<script src="https://cdn.auth0.com/js/auth0-spa-js/2.0/auth0-spa-js.production.js"></script>
+<script src="assets/js/auth0-config.js"></script>
+<script src="assets/js/auth0-client.js"></script>
+<script src="assets/js/auth-protect.js"></script>
+<script src="assets/js/orders.js"></script>
+</body>
+</html>

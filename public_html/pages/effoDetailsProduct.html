@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="../">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flex Seamless Crop – Effo‑X</title>
+  <link rel="icon" type="image/png" href="assets/images/biggerlogoeffo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css?v=20260808-2">
+  <link rel="stylesheet" href="assets/css/effoProducDetail.css">
+  <script type="module" src="https://cdn.shopify.com/storefront/web-components.js"></script>
+</head>
+<body>
+<shopify-store
+  store-domain="https://effo-x.myshopify.com"
+  public-access-token="79268ccf9a0efa1cbab2afcd2b96f637"
+  country="CA"
+  language="en"
+>
+  <div data-include="partials/header.html"></div>
+
+  <main class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/ShopifyFlexProducts">Store</a>
+      <span>/</span>
+      <a href="/ShopifyFlexProducts">Flex</a>
+      <span>/</span>
+      <span>Flex Seamless Crop</span>
+    </nav>
+
+    <section class="product hero-layout">
+      <div class="hero-gallery">
+        <button class="nav prev" type="button" aria-label="Previous image">&#10094;</button>
+        <img class="hero-main" src="assets/images/marquee1/l1.png" alt="Flex Seamless Crop">
+        <button class="nav next" type="button" aria-label="Next image">&#10095;</button>
+      </div>
+
+      <div class="hero-thumbs">
+        <img src="assets/images/marquee1/l1.png" alt="Front view" data-imgurl="assets/images/marquee1/l1.png" class="is-active">
+        <img src="assets/images/marquee1/l2.png" alt="Back view" data-imgurl="assets/images/marquee1/l2.png">
+        <img src="assets/images/marquee1/l3.png" alt="Detail view" data-imgurl="assets/images/marquee1/l3.png">
+        <img src="assets/images/marquee1/l4.png" alt="In motion" data-imgurl="assets/images/marquee1/l4.png">
+      </div>
+
+      <div class="hero-meta">
+        <h1 class="name">Flex Seamless Crop</h1>
+        <p class="price"><strong>$72.00</strong> <span>CAD</span></p>
+        <p class="short">Second-skin feel. Sculpted support. Built for heat sessions and heavy pushes.</p>
+        <p class="meta">Breathable jacquard knit • 4-way stretch • Sweat-wicking</p>
+        <div class="hero-actions actions">
+          <button id="openSizes" class="btn-circle" type="button" aria-label="Select size">+</button>
+          <a class="btn" href="https://effo-x.myshopify.com/collections/flex" target="_blank" rel="noopener">Shop Collection</a>
+        </div>
+      </div>
+
+      <div id="sizeOverlay" class="size-overlay" hidden>
+        <div class="size-sheet" role="dialog" aria-modal="true" aria-labelledby="sizeSheetTitle">
+          <div class="size-sheet-row top">
+            <span class="hint">?</span>
+            <h2 id="sizeSheetTitle">SELECT SIZE</h2>
+            <button id="closeSizes" class="close" type="button" aria-label="Close">×</button>
+          </div>
+
+          <div class="size-sheet-row price">
+            <span><strong>$72.00</strong> CAD</span>
+          </div>
+
+          <div class="sizes-grid">
+            <button class="size-btn" data-code="XS">XS</button>
+            <button class="size-btn" data-code="S">S</button>
+            <button class="size-btn" data-code="M">M</button>
+            <button class="size-btn" data-code="L">L</button>
+            <button class="size-btn" data-code="XL">XL</button>
+          </div>
+
+          <p class="meta">Need sizing help? Email <a href="mailto:support@effo-x.com">support@effo-x.com</a>.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div data-include="partials/footer.html"></div>
+</shopify-store>
+
+<script src="assets/js/includes.js?v=20260808-2"></script>
+<script src="assets/js/header.js?v=20260808-2"></script>
+<script>
+  (function(){
+    document.addEventListener('partialsLoaded', () => {
+      const main = document.querySelector('.hero-main');
+      const thumbs = Array.from(document.querySelectorAll('.hero-thumbs img'));
+      const srcs = thumbs.map(t => t.dataset.imgurl || t.src);
+      let idx = 0;
+      const prev = document.querySelector('.hero-gallery .nav.prev');
+      const next = document.querySelector('.hero-gallery .nav.next');
+
+      function update(activeIdx){
+        if (!main || !srcs.length) return;
+        idx = (activeIdx + srcs.length) % srcs.length;
+        const target = srcs[idx];
+        const img = new Image();
+        img.onload = () => {
+          main.classList.add('is-fading');
+          const onEnd = () => {
+            main.removeEventListener('transitionend', onEnd);
+            main.src = target;
+            requestAnimationFrame(() => {
+              void main.offsetWidth;
+              main.classList.remove('is-fading');
+            });
+            thumbs.forEach((t, ti) => t.classList.toggle('is-active', ti === idx));
+          };
+          main.addEventListener('transitionend', onEnd, { once: true });
+          setTimeout(onEnd, 260);
+        };
+        img.src = target;
+      }
+
+      prev?.addEventListener('click', () => update(idx - 1));
+      next?.addEventListener('click', () => update(idx + 1));
+      thumbs.forEach((thumb, i) => thumb.addEventListener('click', () => update(i)));
+      update(0);
+
+      const overlay = document.getElementById('sizeOverlay');
+      const openBtn  = document.getElementById('openSizes');
+      const closeBtn = document.getElementById('closeSizes');
+      const sizes = overlay?.querySelectorAll('.size-btn') || [];
+
+      function openOverlay(){
+        overlay?.removeAttribute('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeOverlay(){
+        overlay?.setAttribute('hidden', '');
+        document.body.style.overflow = '';
+      }
+
+      openBtn?.addEventListener('click', openOverlay);
+      closeBtn?.addEventListener('click', closeOverlay);
+      overlay?.addEventListener('click', (event) => {
+        if (event.target === overlay) closeOverlay();
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') closeOverlay();
+      });
+
+      sizes.forEach(btn => {
+        btn.addEventListener('click', () => {
+          sizes.forEach(b => b.classList.remove('is-selected'));
+          btn.classList.add('is-selected');
+          closeOverlay();
+        });
+      });
+    });
+  })();
+</script>
+</body>
+</html>

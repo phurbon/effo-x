@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="../">
+  <meta charset="UTF-8">
+  <title>Order Management - Effo-X</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="assets/images/biggerlogoeffo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css?v=20260808-2">
+  <link rel="stylesheet" href="assets/css/admin.css">
+  <script type="module" src="https://cdn.shopify.com/storefront/web-components.js"></script>
+</head>
+<body>
+<shopify-store
+  store-domain="https://effo-x.myshopify.com"
+  public-access-token="79268ccf9a0efa1cbab2afcd2b96f637"
+  country="CA"
+  language="en"
+>
+  <div data-include="partials/header.html"></div>
+
+  <main class="admin-container">
+    <h1>Gestion des commandes</h1>
+    <p class="admin-note">Cette page statique affiche un exemple de commandes. Remplacez par vos données réelles côté serveur si nécessaire.</p>
+
+    <table>
+      <thead>
+      <tr>
+        <th>Numéro de commande</th>
+        <th>Utilisateur</th>
+        <th>Date</th>
+        <th>Total</th>
+        <th>Statut</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>#1001</td>
+        <td>demo@effo-x.com</td>
+        <td>2024-05-12</td>
+        <td>$199.00</td>
+        <td>Expédiée</td>
+        <td>
+          <button disabled>Modifier</button>
+          <button disabled>Supprimer</button>
+        </td>
+      </tr>
+      <tr>
+        <td>#1000</td>
+        <td>jane.doe@example.com</td>
+        <td>2024-04-28</td>
+        <td>$89.00</td>
+        <td>Livrée</td>
+        <td>
+          <button disabled>Modifier</button>
+          <button disabled>Supprimer</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </main>
+
+  <div data-include="partials/footer.html"></div>
+</shopify-store>
+
+<script src="assets/js/includes.js?v=20260808-2"></script>
+<script src="assets/js/header.js?v=20260808-2"></script>
+</body>
+</html>

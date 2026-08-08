@@ -1,0 +1,36 @@
+# Security headers (Hostinger / Apache / LiteSpeed)
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "DENY"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+
+  # Enable HSTS only after confirming HTTPS works for your domain
+  # Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+
+  # CSP in report-only mode to avoid breaking Auth0/Shopify while we tune it
+  Header set Content-Security-Policy-Report-Only "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.shopify.com https://cdn.auth0.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https: data:; connect-src 'self' https://*.myshopify.com https://*.auth0.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests"
+</IfModule>
+
+# Disable directory listing
+Options -Indexes
+
+# Pretty URLs
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Canonical URL redirects
+  RewriteRule ^$ /home [R=301,L]
+  RewriteRule ^index\.html$ /home [R=301,L,NC]
+  RewriteRule ^pages/([A-Za-z0-9_-]+)\.html$ /$1 [R=301,L,NC]
+
+  # Keep existing files/directories as-is
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Route clean URLs
+  RewriteRule ^home/?$ /index.html [L,NC]
+  RewriteCond %{DOCUMENT_ROOT}/pages/$1.html -f
+  RewriteRule ^([A-Za-z0-9_-]+)/?$ /pages/$1.html [L,NC]
+</IfModule>

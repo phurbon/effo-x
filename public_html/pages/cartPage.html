@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="../">
+  <meta charset="UTF-8">
+  <title>Your Cart - Effo-X</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="assets/images/biggerlogoeffo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css?v=20260808-2">
+  <link rel="stylesheet" href="assets/css/cart.css">
+  <script type="module" src="https://cdn.shopify.com/storefront/web-components.js"></script>
+</head>
+<body>
+<shopify-store
+  store-domain="https://effo-x.myshopify.com"
+  public-access-token="79268ccf9a0efa1cbab2afcd2b96f637"
+  country="CA"
+  language="en"
+>
+  <div data-include="partials/header.html"></div>
+
+  <main class="cart-container">
+    <nav class="breadcrumb">
+      <a href="/home" class="breadcrumb-link">Home</a> &gt;
+      <a href="/ShopifyFlexProducts" class="breadcrumb-link">Our Products</a> &gt;
+      <span class="breadcrumb-current">Cart</span>
+    </nav>
+
+    <section class="cart-items">
+      <h1>Your Cart</h1>
+      <p>Use the button below to open your live Shopify cart. You can edit quantities, remove items, and proceed to secure checkout.</p>
+      <button class="main-action" type="button" id="open-cart-btn">Open Cart</button>
+      <p class="cart-note">Need to keep browsing? The cart button in the top navigation is always available.</p>
+
+      <div class="checkout-panel">
+        <div class="checkout-copy">
+          <h3>Promo codes + checkout</h3>
+          <p>Apply a promo code before checkout. You’ll still finish securely on Shopify.</p>
+        </div>
+        <div class="checkout-actions">
+          <label class="promo-field">
+            Promo code
+            <input type="text" id="promo-code" placeholder="e.g. EFFO10">
+          </label>
+          <div class="checkout-buttons">
+            <button class="main-action" type="button" id="apply-promo">Apply code</button>
+            <button class="main-action primary" type="button" id="checkout-btn">Checkout</button>
+          </div>
+          <p id="promo-status" class="promo-status" role="status" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+
+    <aside class="cart-summary-box">
+      <h3>Need Help?</h3>
+      <p>Email our team at <a href="mailto:support@effo-x.com">support@effo-x.com</a> and we’ll help with sizing, shipping, or returns.</p>
+      <p>Ready to complete your purchase? Your checkout happens securely on Shopify.</p>
+    </aside>
+  </main>
+
+  <div data-include="partials/footer.html"></div>
+</shopify-store>
+
+<script src="assets/js/includes.js?v=20260808-2"></script>
+<script src="assets/js/header.js?v=20260808-2"></script>
+<script src="assets/js/cart-checkout.js"></script>
+<script>
+  document.addEventListener('partialsLoaded', function(){
+    const cart = document.getElementById('shopify-cart');
+    const btn = document.getElementById('open-cart-btn');
+    if (cart && btn) {
+      btn.addEventListener('click', () => cart.showModal());
+      cart.showModal();
+    }
+  });
+</script>
+</body>
+</html>

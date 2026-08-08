@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="../">
+  <meta charset="UTF-8">
+  <title>Blog - Effo-X</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="assets/images/biggerlogoeffo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css?v=20260808-2">
+  <link rel="stylesheet" href="assets/css/blogHome.css">
+  <script type="module" src="https://cdn.shopify.com/storefront/web-components.js"></script>
+</head>
+<body>
+<shopify-store
+  store-domain="https://effo-x.myshopify.com"
+  public-access-token="79268ccf9a0efa1cbab2afcd2b96f637"
+  country="CA"
+  language="en"
+>
+  <div data-include="partials/header.html"></div>
+
+  <main class="blog-home">
+    <section class="blog-hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Signals from the circuit</p>
+        <h1>Effo‑X Journal</h1>
+        <p class="lede">
+          Highlights, athlete notes, and the same luminous energy that powers our events billboards.
+          Follow along as we translate tour stops into training ideas and product drops.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="#latest">Latest drops</a>
+          <a class="button ghost" href="/events">View events calendar</a>
+        </div>
+        <div class="hero-metrics">
+          <div class="metric-card">
+            <p class="metric">03</p>
+            <p class="label">stories on deck</p>
+          </div>
+          <div class="metric-card">
+            <p class="metric">+48</p>
+            <p class="label">athlete interviews logged</p>
+          </div>
+        </div>
+      </div>
+      <div class="hero-spotlight">
+        <div class="spotlight-card primary">
+          <span class="pill">Billboard spotlight</span>
+          <h3>Urban Pulse Recap</h3>
+          <p>The neon-laced mural that took over Montréal inspired this week’s mobility session.</p>
+          <a class="link-arrow" href="/event-urban-pulse">Relive the energy</a>
+        </div>
+        <div class="spotlight-card secondary">
+          <span class="pill">Up next</span>
+          <ul class="hero-highlights">
+            <li>Summit of Steel interviews drop Friday.</li>
+            <li>FinEx prototypes ride the next coastal tour.</li>
+            <li>Billboard photo dump hits the Journal first.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="latest" class="blog-section">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">Latest dispatch</p>
+          <h2>Stories built with the same glow as our events billboards</h2>
+          <p>Glass, gradient, and grit—each post pulls from the touring installations lighting up Effo‑X cities.</p>
+        </div>
+        <div class="section-controls">
+          <span class="filter-pill active">All posts</span>
+          <span class="filter-pill">Training lab</span>
+          <span class="filter-pill">Product notes</span>
+        </div>
+      </div>
+
+      <div class="blog-list">
+        <article class="blog-post blog-billboard" data-post-id="training-smarter">
+          <div class="billboard-sheen"></div>
+          <div class="post-meta">
+            <span class="tag tag--accent">Training lab</span>
+            <span class="date">June 1, 2025</span>
+          </div>
+          <div class="thumb">
+            <img src="assets/images/blog2/1.png" alt="Athlete warming up before a training session">
+          </div>
+          <h2>Training Smarter, Not Harder</h2>
+          <p class="excerpt">Discover mobility drills and warmups our athletes use before intense sessions. Stay loose, stay powerful.</p>
+          <div class="billboard-footer">
+            <a class="read-more button primary" href="pages/blogPost.html?id=training-smarter">Read story</a>
+            <span class="pill">Fresh drop</span>
+          </div>
+        </article>
+
+        <article class="blog-post blog-billboard" data-post-id="thank-you-montreal">
+          <div class="billboard-sheen"></div>
+          <div class="post-meta">
+            <span class="tag tag--accent">Community</span>
+            <span class="date">January 28, 2026</span>
+          </div>
+          <div class="thumb">
+            <img src="assets/images/blog2/1.png" alt="Montreal community gathering">
+          </div>
+          <h2>Thank You, Montreal</h2>
+          <p class="excerpt">Built by community and driven by Xcellence — a gratitude note to everyone who’s helped Effo-X grow.</p>
+          <div class="billboard-footer">
+            <a class="read-more button primary" href="pages/blogPost.html?id=thank-you-montreal">Read story</a>
+            <span class="pill">Fresh drop</span>
+          </div>
+        </article>
+       
+
+       
+      </div>
+    </section>
+  </main>
+
+  <div data-include="partials/footer.html"></div>
+</shopify-store>
+
+<script src="assets/js/includes.js?v=20260808-2"></script>
+<script src="assets/js/header.js?v=20260808-2"></script>
+<script src="assets/js/blogData.js"></script>
+<script src="assets/js/blog.js"></script>
+</body>
+</html>

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="./">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Effo-X</title>
+  <link rel="icon" type="image/png" href="assets/images/biggerlogoeffo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css?v=20260808-2">
+  <script type="module" src="https://cdn.shopify.com/storefront/web-components.js"></script>
+</head>
+<body class="home-page">
+<shopify-store
+  store-domain="https://effo-x.myshopify.com"
+  public-access-token="79268ccf9a0efa1cbab2afcd2b96f637"
+  country="CA"
+  language="en"
+>
+  <div data-include="partials/header.html"></div>
+
+  <main>
+    <section class="hero" data-scene>
+      <div class="video-container">
+        <video class="full-width-video" width="100%" height="auto" autoplay muted loop playsinline>
+          <source src="assets/images/sportstock.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <div class="video-overlay" data-scroll data-y="24,0" data-opacity="0.6,1" data-scale="0.98,1">
+          <img class="logo-small" src="assets/images/flippedtxteffo.png" alt="Overlay Logo">
+          <span class="logo-description">Focus · On · Excellence</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="featured" data-scene>
+      <div class="section-bar" data-reveal data-scroll data-y="18,0" data-opacity="0.7,1">
+        <h2 class="section-title reveal-item" style="--i:0">Our Bestsellers</h2>
+      </div>
+      <div class="product-grid" data-reveal data-source="shopify" data-scroll data-y="16,0" data-opacity="0.85,1">
+        <shopify-list-context type="product" query="products" first="4">
+          <template>
+            <article class="product-card reveal-item">
+              <div class="img-wrap">
+                <div class="img-skeleton">&nbsp;</div>
+                <a class="product__link" onclick="document.getElementById('product-modal').showModal(); document.getElementById('product-modal-context').update(event);">
+                  <shopify-media width="450" height="450" query="product.featuredImage"></shopify-media>
+                </a>
+              </div>
+              <div class="meta">
+                <h3 class="brand">
+                  <a class="product__link" onclick="document.getElementById('product-modal').showModal(); document.getElementById('product-modal-context').update(event);">
+                    <shopify-data query="product.title"></shopify-data>
+                  </a>
+                </h3>
+                <p class="name"><shopify-data query="product.description"></shopify-data></p>
+                <p class="price">
+                  <shopify-money query="product.selectedOrFirstAvailableVariant.price"></shopify-money>
+                </p>
+                <div class="badges">
+                  <span class="badge"><shopify-data query="product.productType"></shopify-data></span>
+                </div>
+              </div>
+              <span class="product-handle" hidden><shopify-data query="product.handle"></shopify-data></span>
+            </article>
+          </template>
+        </shopify-list-context>
+      </div>
+    </section>
+
+    <dialog id="product-modal" class="product-modal" role="dialog" aria-modal="true" aria-labelledby="product-modal-title">
+      <shopify-context id="product-modal-context" type="product" wait-for-update>
+        <template>
+          <div class="product-modal__container">
+            <div class="product-modal__close-container">
+              <button class="product-modal__close" type="button" aria-label="Close" onclick="document.getElementById('product-modal').close();">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </button>
+            </div>
+            <div class="product-modal__content">
+              <div class="product-modal__layout">
+                <div class="product-modal__media">
+                  <div class="modal-gallery" data-modal-gallery>
+                    <div class="modal-gallery__main">
+                      <img data-modal-main alt="">
+                    </div>
+                    <div class="modal-gallery__thumbs" data-modal-thumbs></div>
+                    <span data-modal-handle hidden><shopify-data query="product.handle"></shopify-data></span>
+                  </div>
+                </div>
+                <div class="product-modal__details">
+                  <div class="product-modal__header">
+                    <div>
+                      <span class="product-modal__vendor">
+                        <shopify-data query="product.vendor"></shopify-data>
+                      </span>
+                    </div>
+                    <h1 class="product-modal__title" id="product-modal-title">
+                      <shopify-data query="product.title"></shopify-data>
+                    </h1>
+                    <div class="product-modal__price-container">
+                      <shopify-money query="product.selectedOrFirstAvailableVariant.price"></shopify-money>
+                      <shopify-money class="product-modal__compare-price" query="product.selectedOrFirstAvailableVariant.compareAtPrice"></shopify-money>
+                    </div>
+                    <div class="product-modal__description">
+                      <span class="product-modal__description-text">
+                        <shopify-data query="product.descriptionHtml"></shopify-data>
+                      </span>
+                    </div>
+                  </div>
+                  <shopify-variant-selector></shopify-variant-selector>
+                  <div class="product-modal__buttons">
+                    <button class="product-modal__add-button" onclick="document.getElementById('shopify-cart')?.addLine(event); document.getElementById('shopify-cart')?.showModal(); document.getElementById('product-modal').close();" shopify-attr--disabled="!product.selectedOrFirstAvailableVariant.availableForSale">Add to cart</button>
+                    <button class="product-modal__buy-button" onclick="document.querySelector('shopify-store').buyNow(event)" shopify-attr--disabled="!product.selectedOrFirstAvailableVariant.availableForSale">Buy now</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </template>
+      </shopify-context>
+    </dialog>
+
+    <section class="category-carousel is-dark" data-scene aria-label="Product Categories" data-reveal>
+      <div class="section-bar">
+        <h2 class="section-title reveal-item" style="--i:0">Shop by Categories</h2>
+        <div class="cat-controls">
+          <button class="cat-prev" type="button" aria-label="Previous">‹</button>
+          <button class="cat-next" type="button" aria-label="Next">›</button>
+        </div>
+      </div>
+      <div class="category-track" data-scroll data-y="14,0" data-opacity="0.85,1">
+
+         <figure class="category-item reveal-item" style="--i:0">
+          <a href="/ShopifyXcellenceProducts" class="category-card" aria-label="Shop Xcellence">
+            <img src="assets/images/categories/sectionXcellence.png" alt="Effo-X Xcellence collection">
+            <span class="category-title" aria-hidden="true">Xcellence</span>
+          </a>
+          <figcaption class="category-caption">XCELLENCE</figcaption>
+        </figure>
+
+        <figure class="category-item reveal-item" style="--i:0">
+          <a href="/ShopifyFlexProducts" class="category-card" aria-label="Shop FLEX">
+            <img src="assets/images/categories/sectionFlex.jpg" alt="Effo-X Flex collection">
+            <span class="category-title" aria-hidden="true">FLEX</span>
+          </a>
+          <figcaption class="category-caption">FLEX</figcaption>
+        </figure>
+
+        <figure class="category-item reveal-item" style="--i:1">
+          <a href="/ShopifyFocusProducts" class="category-card" aria-label="Shop FOCUS">
+            <img src="assets/images/categories/sectionFocus.png" alt="Effo-X Focus collection">
+            <span class="category-title" aria-hidden="true">FOCUS</span>
+          </a>
+          <figcaption class="category-caption">FOCUS</figcaption>
+        </figure>
+
+        <figure class="category-item reveal-item" style="--i:2">
+          <a href="/ShopifyFinExProducts" class="category-card" aria-label="Shop FIN-EX">
+            <img src="assets/images/categories/sectionFinex.png" alt="Effo-X Fin-Ex collection">
+            <span class="category-title" aria-hidden="true">FIN-EX</span>
+          </a>
+          <figcaption class="category-caption">FIN-EX</figcaption>
+        </figure>
+
+        <figure class="category-item reveal-item" style="--i:3">
+          <a href="/ShopifyFusionProducts" class="category-card" aria-label="Shop FUSION">
+            <img class="category-img--fusion" src="assets/images/categories/fusion.jpg" alt="Effo-X Fusion collection">
+            <span class="category-title" aria-hidden="true">FUSION</span>
+          </a>
+          <figcaption class="category-caption">FUSION</figcaption>
+        </figure>
+
+        <figure class="category-item reveal-item" style="--i:4">
+          <a href="/ShopifyFlareProducts" class="category-card" aria-label="Shop FLARE">
+            <img class="category-img--flare" src="assets/images/categories/sectionFlare.png" alt="Effo-X Flare collection">
+            <span class="category-title" aria-hidden="true">FLARE</span>
+          </a>
+          <figcaption class="category-caption">FLARE</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="about-band" data-scene id="about" aria-label="About Effo-X" data-reveal>
+      <div class="about-inner" data-scroll data-y="18,0" data-opacity="0.7,1">
+        <h2 class="about-title reveal-item" style="--i:0">OUR ACTIVEWEAR</h2>
+        <p class="about-paragraph reveal-item" style="--i:1">
+          Discover comfort and performance with Effo‑X activewear. Our clothing is designed to support you through every movement,
+          whether you’re training at the gym, running outdoors, or relaxing after a long day. Using lightweight, breathable fabrics,
+          Effo‑X activewear keeps you cool, dry, and ready for whatever comes next.
+        </p>
+        <p class="about-paragraph reveal-item" style="--i:2">
+          Each piece of Effo‑X activewear combines modern style with practical design, so you never have to choose between looking
+          good and feeling great. From flexible leggings and supportive tops to durable hoodies and tees, our collection is made to
+          move with you and help you perform at your best every day.
+        </p>
+        <img class="about-logo reveal-item" style="--i:3" src="assets/images/biggerlogoeffo.png" alt="Effo-X logo">
+      </div>
+    </section>
+
+    <section class="cta-band" data-scene aria-label="Join Effo-X" data-reveal>
+      <div class="cta-inner" data-scroll data-y="14,0" data-opacity="0.75,1">
+        <div class="cta-text reveal-item" style="--i:0">BECOME A MEMBER</div>
+        <a class="cta-button reveal-item" style="--i:1" href="/register">SIGN UP FOR FREE</a>
+      </div>
+    </section>
+  </main>
+
+  <div data-include="partials/footer.html"></div>
+</shopify-store>
+
+<script src="assets/js/includes.js?v=20260808-2"></script>
+<script src="assets/js/header.js?v=20260808-2"></script>
+<script src="assets/js/home.js"></script>
+<script>
+  (function(){
+    document.addEventListener('partialsLoaded', function(){
+      if (window.initSiteHeader) window.initSiteHeader();
+    });
+
+    document.addEventListener('DOMContentLoaded', function(){
+      var container = document.querySelector('.video-container');
+      var overlay   = document.querySelector('.video-overlay');
+      if(!container || !overlay) return;
+
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if(reduce){ overlay.classList.add('visible'); return; }
+
+      var inView = false;
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting){
+            overlay.classList.add('visible');
+            inView = true;
+            rafTick();
+          } else {
+            inView = false;
+            overlay.style.transform = '';
+          }
+        });
+      }, { root: null, threshold: 0.3 });
+
+      io.observe(container);
+
+      var ticking = false;
+      function onScroll(){ if(!ticking){ ticking = true; requestAnimationFrame(rafTick); } }
+      function rafTick(){
+        ticking = false;
+        if(!inView) return;
+        var rect = container.getBoundingClientRect();
+        var vh = window.innerHeight || document.documentElement.clientHeight;
+        var progress = Math.max(0, Math.min(1, (vh - rect.top) / (vh + rect.height)));
+        var shift = (-8) + progress * 32;
+        overlay.style.transform = 'translateY(' + shift.toFixed(2) + 'px)';
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll);
+
+      (function initSectionReveal(){
+        var sections = document.querySelectorAll('[data-reveal]');
+        if(!sections.length) return;
+        var ioReveal = new IntersectionObserver(function(entries){
+          entries.forEach(function(entry){
+            if(entry.isIntersecting){
+              entry.target.classList.add('is-visible');
+            } else {
+              entry.target.classList.remove('is-visible');
+            }
+          });
+        }, { threshold: 0.2 });
+        sections.forEach(function(section){ ioReveal.observe(section); });
+      })();
+    });
+  })();
+</script>
+</body>
+</html>
