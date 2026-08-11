@@ -1870,6 +1870,56 @@ header.header .mega .menu-action{
     opacity: .95;
 }
 
+/* === Latest YouTube video band === */
+.latest-video-band{
+    background: #0b1118;
+    color: #ecf2fa;
+    padding: 52px 16px 64px;
+}
+.latest-video-inner{
+    width: min(1100px, 92vw);
+    margin: 0 auto;
+    display: grid;
+    gap: 16px;
+}
+.latest-video-title{
+    margin: 0;
+    text-align: center;
+    font-size: clamp(20px, 2.3vw, 30px);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    font-weight: 900;
+    color: #ffffff;
+}
+.latest-video-copy{
+    margin: 0 auto;
+    max-width: 720px;
+    text-align: center;
+    font-size: 15px;
+    line-height: 1.7;
+    color: #c7d3e1;
+}
+.latest-video-frame-wrap{
+    width: 100%;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #05080e;
+    border: 1px solid rgba(138, 180, 248, 0.22);
+    box-shadow: 0 24px 56px rgba(0, 0, 0, 0.38);
+}
+.latest-video-frame{
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 0;
+}
+
+@media (max-width: 700px){
+  .latest-video-band{
+    padding: 42px 12px 52px;
+  }
+}
+
 /* === Scroll-in animations for hero video overlay === */
 :root{
   --reveal-duration: .6s;
@@ -2435,8 +2485,17 @@ header.header .mega .menu-action{
 .category-item{ flex: 0 0 calc((100% - 48px)/3); scroll-snap-align: start; color: #fff; }
 @media (max-width: 900px){ .category-item{ flex-basis: 80%; } }
 @media (max-width: 640px){
-  .category-carousel{ --cat-aspect: 4 / 3; }
-  .category-item{ flex-basis: 84%; }
+  .category-carousel{ --cat-aspect: 3 / 4; }
+  .category-item{
+    flex: 0 0 calc(100vw - 48px);
+    max-width: 420px;
+  }
+  .category-item .category-card img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
   .category-caption{ font-size: 1rem; }
 }
 
