@@ -257,6 +257,42 @@
           </section>
         </template>
       </shopify-context>
+
+      <shopify-context type="collection" handle="full-gear">
+        <template>
+          <section class="collection-grid catalog-group" data-scroll data-y="14,0" data-opacity="0.85,1">
+            <div class="collection-grid__head">
+              <h2>RASH GUARDS</h2>
+              <p>Technical compression layers built for grappling, training, and unrestricted movement.</p>
+            </div>
+            <div class="product-grid" data-source="shopify">
+              <shopify-list-context type="product" query="collection.products" first="12">
+                <template>
+                  <article class="product-card">
+                    <div class="img-wrap">
+                      <a class="product__link" onclick="document.getElementById('product-modal').showModal(); document.getElementById('product-modal-context').update(event);">
+                        <shopify-media width="450" height="450" query="product.featuredImage"></shopify-media>
+                      </a>
+                    </div>
+                    <div class="meta">
+                      <h3 class="brand">
+                        <a class="product__link" onclick="document.getElementById('product-modal').showModal(); document.getElementById('product-modal-context').update(event);">
+                          <shopify-data query="product.title"></shopify-data>
+                        </a>
+                      </h3>
+                      <p class="name"><shopify-data query="product.description"></shopify-data></p>
+                      <p class="price"><shopify-money query="product.selectedOrFirstAvailableVariant.price"></shopify-money></p>
+                      <div class="badges">
+                        <span class="badge"><shopify-data query="product.productType"></shopify-data></span>
+                      </div>
+                    </div>
+                  </article>
+                </template>
+              </shopify-list-context>
+            </div>
+          </section>
+        </template>
+      </shopify-context>
     </section>
 
     <dialog id="product-modal" class="product-modal" role="dialog" aria-modal="true" aria-labelledby="product-modal-title">
