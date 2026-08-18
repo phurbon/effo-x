@@ -65,6 +65,7 @@ const ensureSharedProtectionScripts = (() => {
 
 ensureSharedProtectionScripts('assets/js/security.js', 'data-security-layer');
 ensureSharedProtectionScripts('assets/js/formSecurity.js', 'data-form-guard');
+ensureSharedProtectionScripts('assets/js/cookie-consent.js', 'data-cookie-consent-layer');
 
 document.addEventListener('DOMContentLoaded', () => {
   const includeTargets = Array.from(document.querySelectorAll('[data-include]'));

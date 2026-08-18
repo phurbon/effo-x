@@ -17,6 +17,11 @@
     transition: top 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
     z-index: 1200;
 }
+
+.collection-notice{font-size:.88rem;line-height:1.45;margin:.75rem 0;color:inherit;opacity:.88}
+.collection-notice a{color:inherit;text-decoration:underline}
+.cookie-consent{position:fixed;z-index:10000;left:1rem;right:1rem;bottom:1rem;display:flex;align-items:center;justify-content:space-between;gap:1.2rem;max-width:960px;margin:auto;padding:1rem 1.2rem;border:1px solid #4d755c;border-radius:12px;background:#101612;color:#fff;box-shadow:0 12px 40px rgba(0,0,0,.35)}
+.cookie-consent p{margin:0;max-width:680px;line-height:1.4}.cookie-consent a{color:#b9ffca}.cookie-consent div{display:flex;gap:.5rem;flex-wrap:wrap}.cookie-consent button{border:1px solid #b9ffca;border-radius:999px;padding:.6rem .9rem;background:transparent;color:#fff;cursor:pointer}.cookie-consent button:last-child{background:#b9ffca;color:#102016}@media(max-width:700px){.cookie-consent{display:block}.cookie-consent div{margin-top:.8rem}}
 .navbar-left{
     display: flex;
     align-items: center;
